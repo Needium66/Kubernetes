@@ -1,0 +1,76 @@
+#This contains some common commands/queries that are run in Kubernetes
+#Configuration and Secrets
+#To create a configmap, run the below command
+kubectl create configmap "name" --from-literal="key"="value"
+#To get configmaps, run the below command
+kubectl get configmaps
+#To create a secret
+kubectl create secret generic "name" --from-literal="key"="value"
+#Get secrets
+kubectl get secrets
+
+#Deployments and Pods
+#Create a Deployment
+kubectl create deployment "name"--image="image"
+#Get deployments
+kubectl get deployments
+#Get pods
+kubectl get pods
+#Describe Deployment
+kubectl describe deployment "name"
+#Delete a deployment
+kubectl delete deployment "name"
+#Scale a deployment
+kubectl scale deployment "name" --replicas="num"
+
+#Cluster management
+#To get cluster info, run the below command
+kubectl cluster-info
+#To view nodes
+kubectl get nodes
+#To view metrics for nodes
+kubectl top node
+#To view kubernetes version
+kubectl version
+
+#Commands for namespaces
+#To list all namespaces
+kubectl get namespaces
+#To create namespaces
+kubectl create namespace "name"
+#To set default namespace for context
+kubectl config set-context --current --namespace="name"
+
+#Logs and debugging
+#To get logs for a pod, run the below command
+kubectl logs "pod_name"
+#To execute command in pod
+kubectl exec -it "pod_name" --"command"
+#To files from/to pod
+kubectl cp "file-spec-src" "file-spec-dest"
+
+#Services(Networking)
+#To expose deployment as a service
+kubectl expose deployment "name" --type=LoadBalancer --port=<port>
+#To get services
+kubectl get services
+#To describe a service
+kubectl describe services "name"
+#To delete a service
+kubectl delete service "name"
+
+#Advanced commands
+#Rollout history
+kubectl rollout history deployment/"name"
+#To undo deployment
+kubectl rollout undo deployment/"name"
+#To apply configuration file
+kubectl apply -f "file.yaml"
+#To get resource usage by pod
+kubectl top pod
+
+#Networking and Policies
+#Network policies
+kubectl get networkpolicies
+#Edit a resource
+kubectl edit "resource_type"/"name"
